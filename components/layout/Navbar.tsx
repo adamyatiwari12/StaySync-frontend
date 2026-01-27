@@ -30,12 +30,12 @@ const Navbar = () => {
         transition={{ duration: 0.5 }}
         className="container px-2 py-6 flex justify-between items-center"
       >
-        {/* Logo section */}
+
         <div className="flex items-center gap-3">
-          <img src={Logo.src} alt="logo" className="w-10" />
+          <img src={Logo.src} alt="logo" className="w-7" />
           <span className="text-2xl font-bold">StaySync</span>
         </div>
-        {/* Link section */}
+
         {/* <div className="hidden md:block">
           {NavLinks.map((link,ind) => {
             return (
@@ -48,7 +48,7 @@ const Navbar = () => {
             );
           })}
         </div> */}
-        {/* Button section */}
+
         <div className="flex gap-2">
           <Link href="/signup">
           <button className="primary-btn">Try For Free</button>

@@ -40,18 +40,16 @@ const AdminNavbar: FC = () => {
     <nav className="sticky top-0 z-50 bg-background border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
           <div
             className="flex items-center gap-2 cursor-pointer"
             onClick={() => handleNavigation("/")}
           >
-            <img src={Logo.src} alt="StaySync" className="h-8.5 w-8.5" />
+            <img src={Logo.src} alt="StaySync" className="w-7" />
             <span className="text-xl font-bold text-text-primary">
               StaySync
             </span>
           </div>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-2">
             {navLinks.map((link) => {
               const Icon = link.icon;

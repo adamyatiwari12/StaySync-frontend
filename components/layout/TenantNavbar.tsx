@@ -38,18 +38,17 @@ const TenantNavbar: FC = () => {
     <nav className="sticky top-0 z-50 bg-background border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
+
           <div
             className="flex items-center gap-2 cursor-pointer"
             onClick={() => handleNavigation("/")}
           >
-            <img src={Logo.src} alt="StaySync" className="h-8.5 w-8.5" />
+            <img src={Logo.src} alt="StaySync" className="w-7" />
             <span className="text-xl font-bold text-text-primary">
               StaySync
             </span>
           </div>
 
-          {/* Desktop Nav */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-4">
               {navLinks.map((link) => {
@@ -68,7 +67,6 @@ const TenantNavbar: FC = () => {
             </div>
           </div>
 
-          {/* Mobile Toggle */}
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -80,7 +78,6 @@ const TenantNavbar: FC = () => {
           </div>
         </div>
 
-        {/* Mobile Nav */}
         {isOpen && (
           <div className="md:hidden pb-4 border-t border-border">
             <div className="space-y-2 pt-4">
