@@ -6,6 +6,7 @@ StaySync is a full-stack, multi-tenant PG/Hostel management web application desi
 
 ## 🚀 Live Demo
 Frontend: https://stay-sync-frontend.vercel.app
+
 Backend: https://staysync-backend-pr02.onrender.com
 
 Note: The backend is hosted on Render (free tier) and may take a few seconds to wake up on the first request.
