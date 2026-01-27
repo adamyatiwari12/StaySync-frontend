@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+/* ===============================
+   SEMANTIC DESIGN TOKENS
+=============================== */
+
+@layer base {
+  :root {
+    --primary: 21 128 61;
+    --primary-light: 134 239 172;
+    --primary-dark: 20 83 45;
+
+    --secondary: 202 138 4;
+
+    --background: 252 248 242;
+    --background-card: 255 255 255;
+    --background-muted: 244 238 229;
+
+    --text-primary: 41 37 36;
+    --text-secondary: 87 83 78;
+    --text-muted: 120 113 108;
+
+    --border: 231 229 228;
+    --border-muted: 214 211 209;
+
+    --success: 22 163 74;
+    --warning: 202 138 4;
+    --error: 220 38 38;
+    --info: 21 128 61;
+  }
+}
+
+/* ===============================
+   TAILWIND v4 THEME MAPPING
+   THIS CREATES bg-*, text-*, border-* CLASSES
+=============================== */
+
+@theme {
+  --color-primary: rgb(var(--primary));
+  --color-primary-light: rgb(var(--primary-light));
+  --color-primary-dark: rgb(var(--primary-dark));
+  --color-secondary: rgb(var(--secondary));
+
+  --color-background: rgb(var(--background));
+  --color-background-card: rgb(var(--background-card));
+  --color-background-muted: rgb(var(--background-muted));
+
+  --color-text-primary: rgb(var(--text-primary));
+  --color-text-secondary: rgb(var(--text-secondary));
+  --color-text-muted: rgb(var(--text-muted));
+
+  --color-border: rgb(var(--border));
+  --color-border-muted: rgb(var(--border-muted));
+
+  --color-success: rgb(var(--success));
+  --color-warning: rgb(var(--warning));
+  --color-error: rgb(var(--error));
+  --color-info: rgb(var(--info));
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    font-family: ui-sans-serif, system-ui, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial;
+  }
+}
+
+/* ===============================
+   TAILWIND v3 COMPATIBLE CONTAINER
+   (Required for Tailwind v4)
+=============================== */
+
+@layer components {
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      max-width: 1024px;
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .container {
+      max-width: 1280px;
+      padding-left: 5rem;
+      padding-right: 5rem;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .container {
+      max-width: 1536px;
+      padding-left: 6rem;
+      padding-right: 6rem;
+    }
+  }
+
+  .primary-btn {
+    @apply text-sm lg:text-base border border-primary px-4 py-2 uppercase inline-block cursor-pointer;
+    box-shadow: 5px 5px 0px 0px var(--color-primary);
+    transition: all 300ms;
+  }
+
+  .primary-btn:hover {
+    @apply bg-primary text-white;
+    box-shadow: 5px 5px 0px 0px var(--color-primary-dark);
+  }
+
+  .secondary-btn {
+    @apply text-sm lg:text-base border border-secondary px-4 py-2 uppercase inline-block cursor-pointer;
+    box-shadow: 5px 5px 0px 0px var(--color-secondary);
+    transition: all 300ms;
+  }
+
+  .secondary-btn:hover {
+    @apply bg-secondary text-white;
+    box-shadow: 5px 5px 0px 0px var(--color-secondary);
+  }
+}
