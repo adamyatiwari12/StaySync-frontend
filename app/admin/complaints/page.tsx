@@ -127,7 +127,7 @@ export default function AdminComplaintsPage() {
         <AdminNavbar />
 
         <div className="max-w-7xl mx-auto space-y-6 p-6 sm:p-8">
-          {/* Header */}
+
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <h1 className="text-2xl font-bold tracking-tight">Issues</h1>
@@ -140,7 +140,6 @@ export default function AdminComplaintsPage() {
             </span>
           </div>
 
-          {/* Filters */}
           <div className="bg-background-card p-4 rounded-xl border border-border flex flex-col sm:flex-row gap-4">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted w-5 h-5" />
@@ -171,7 +170,6 @@ export default function AdminComplaintsPage() {
             </div>
           </div>
 
-          {/* Error */}
           {error && (
             <div className="bg-error/10 text-error p-4 rounded-lg text-sm border border-error/30 flex items-center">
               <AlertCircle className="w-5 h-5 mr-2" />
@@ -179,7 +177,6 @@ export default function AdminComplaintsPage() {
             </div>
           )}
 
-          {/* Table */}
           <div className="bg-background-card rounded-xl border border-border overflow-hidden">
             {filteredComplaints.length === 0 ? (
               <div className="p-12 text-center">

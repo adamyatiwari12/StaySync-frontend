@@ -4,6 +4,7 @@ import ProtectedRoute from "@/components/ProtectedRoute";
 import AdminNavbar from "@/components/layout/AdminNavbar";
 import { useEffect, useState } from "react";
 import { getRooms } from "@/services/room.services";
+import { getComplaints } from "@/services/complaint.service";
 import { Building, Users, AlertCircle, TrendingUp, Plus, UserPlus } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -16,6 +17,7 @@ export default function AdminDashboard() {
     totalCapacity: 0,
     occupiedCount: 0,
     occupancyRate: 0,
+    pendingIssues: 0,
   });
 
   useEffect(() => {
@@ -32,12 +34,18 @@ export default function AdminDashboard() {
             ? Math.round((occupiedCount / totalCapacity) * 100)
             : 0;
 
+        const { data: complaintsData } = await getComplaints();
+        const pendingIssues = complaintsData.filter(
+          (c) => c.status === "open" || c.status === "in_progress"
+        ).length;
+
         setStats({
           totalRooms,
           availableRooms,
           totalCapacity,
           occupiedCount,
           occupancyRate,
+          pendingIssues,
         });
       } catch (error) {
         console.error("Failed to fetch dashboard stats:", error);
@@ -111,7 +119,7 @@ export default function AdminDashboard() {
                 />
                 <StatCard
                   title="Pending Issues"
-                  value="0"
+                  value={stats.pendingIssues}
                   subValue="Needs attention"
                   icon={AlertCircle}
                   accent="error"
