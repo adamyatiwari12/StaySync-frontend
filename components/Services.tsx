@@ -2,9 +2,19 @@ import React from "react";
 import { motion } from "framer-motion";
 import { SlideUp } from "@/app/animation/animate";
 import Link from "next/link";
-import { LayoutDashboard, Users } from "lucide-react";
+import { LayoutDashboard, Users,ShieldCheck } from "lucide-react";
 
 const ServiceCard = [
+  {
+  id: 3,
+  title: "Super Admin",
+  description:
+    "Oversee all properties and users, manage managers, monitor system activity, and control global settings from one dashboard.",
+  icon: <ShieldCheck />, // or Settings / Crown / UserCog
+  link: "/signup",
+  delay: 0.2,
+}
+,
   {
     id: 1,
     title: "Manager",
@@ -12,7 +22,7 @@ const ServiceCard = [
       "Create and manage rooms, assign residents, track occupancy, and handle maintenance requests efficiently.",
     icon: <LayoutDashboard />,
     link: "/signup",
-    delay: 0.2,
+    delay: 0.4,
   },
   {
     id: 2,
@@ -21,7 +31,7 @@ const ServiceCard = [
       "View stay details, raise service requests, track status, and manage your personal profile with ease.",
     icon: <Users />,
     link: "/signup",
-    delay: 0.4,
+    delay: 0.6,
   },
 ];
 const Services = () => {
@@ -63,7 +73,7 @@ const Services = () => {
                   {card.icon}
                 </span>
                 <p className="text-2xl font-bold font-serif">{card.title}</p>
-                <p className="text-text-muted text-xs">{card.description}</p>
+                <p className="text-xs">{card.description}</p>
                 <Link
                   href={card.link}
                   className="inline-block border-b border-primary"

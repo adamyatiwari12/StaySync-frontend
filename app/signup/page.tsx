@@ -3,6 +3,7 @@
 import { useState, FC, FormEvent, ChangeEvent } from "react";
 import { signup } from "@/services/auth.services";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { SignupData } from "@/types/auth";
 import { Mail, Lock, User, Eye, EyeOff } from "lucide-react";
 import { getErrorMessage } from "@/lib/getErrorMessage";
@@ -20,7 +21,7 @@ const SignupPage: FC = () => {
     username: "",
     email: "",
     password: "",
-    stayId: "",
+    stayId: "697851963138d44d07fa81f1",
   });
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -93,7 +94,6 @@ const SignupPage: FC = () => {
 
           <form onSubmit={handleSubmit} className="space-y-5">
 
-            {/* ✅ Stay ID (ONLY NEW FIELD) */}
             <div>
               <label className="block text-sm font-medium mb-2">
                 Stay ID
@@ -114,7 +114,6 @@ const SignupPage: FC = () => {
               )}
             </div>
 
-            {/* Username */}
             <div>
               <label className="block text-sm font-medium mb-2">
                 Username
@@ -138,7 +137,6 @@ const SignupPage: FC = () => {
               )}
             </div>
 
-            {/* Email */}
             <div>
               <label className="block text-sm font-medium mb-2">
                 Email Address
@@ -162,7 +160,6 @@ const SignupPage: FC = () => {
               )}
             </div>
 
-            {/* Password */}
             <div>
               <label className="block text-sm font-medium mb-2">
                 Password
@@ -200,8 +197,26 @@ const SignupPage: FC = () => {
             >
               Sign Up
             </button>
-
           </form>
+
+          <div className="mt-6 text-center">
+            <p className="text-text-secondary text-sm">
+              Already have an account?{" "}
+              <Link
+                href="/signin"
+                className="text-primary hover:underline font-medium"
+              >
+                Sign In
+              </Link>
+            </p>
+          </div>
+
+          <div className="mt-8 pt-6 border-t border-border text-center">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/5 text-primary text-xs font-medium border border-primary/10">
+              <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+              Backend: Render Free Tier (may take a few seconds to wake up)
+            </div>
+          </div>
         </div>
       </div>
     </div>

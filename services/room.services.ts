@@ -24,3 +24,7 @@ export const assignTenant = (data: {
 export const removeTenant = (data: { tenantId: string }) => {
   return API.post("/rooms/remove", data);
 };
+
+export const deleteRoom = (id: string): Promise<AxiosResponse<{ message: string }>> => {
+  return API.delete(`/rooms/${id}`);
+};

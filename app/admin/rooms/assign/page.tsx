@@ -40,7 +40,7 @@ function AssignTenantContent() {
         setRooms(roomsRes.data.filter(r => r.occupiedCount < r.capacity));
 
         // Filter for tenants without a room
-        setTenants(tenantsRes.data.filter(t => !t.room));
+        setTenants(tenantsRes.data.filter(t => !t.roomId));
       } catch (err) {
         setError("Failed to load data. Please try again.");
       } finally {
@@ -95,7 +95,7 @@ function AssignTenantContent() {
   if (loading) {
     return (
       <div className="flex justify-center items-center min-h-[60vh]">
-        <Loader2 className="animate-spin text-blue-600" size={40} />
+        <Loader2 className="animate-spin text-primary" size={40} />
       </div>
     );
   }
@@ -104,35 +104,35 @@ function AssignTenantContent() {
     <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <button 
         onClick={() => router.back()}
-        className="flex items-center text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 mb-6 transition-colors"
+        className="flex items-center text-text-muted hover:text-text-primary mb-6 transition-colors"
       >
         <ArrowLeft size={20} className="mr-2" />
         Back to Rooms
       </button>
 
-      <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-gray-200 dark:border-slate-800 overflow-hidden">
-        <div className="p-8 border-b border-gray-100 dark:border-slate-800 bg-gray-50 dark:bg-slate-800/50">
+      <div className="bg-background-card rounded-2xl shadow-xl border border-border overflow-hidden">
+        <div className="p-8 border-b border-border bg-background-muted/50">
           <div className="flex items-center gap-4">
-            <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-xl text-blue-600 dark:text-blue-400">
+            <div className="p-3 bg-primary/10 rounded-xl text-primary">
                <UserPlus size={32} />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Assign Tenant</h1>
-              <p className="text-gray-500 dark:text-gray-400 mt-1">Select a room and a tenant to assign them together.</p>
+              <h1 className="text-2xl font-bold text-text-primary">Assign Tenant</h1>
+              <p className="text-text-secondary mt-1">Select a room and a tenant to assign them together.</p>
             </div>
           </div>
         </div>
 
         <div className="p-8">
           {error && (
-            <div className="mb-6 p-4 bg-red-50 dark:bg-red-900/10 border border-red-200 dark:border-red-800 rounded-xl flex items-center gap-3 text-red-600 dark:text-red-400 animate-in fade-in slide-in-from-top-2">
+            <div className="mb-6 p-4 bg-error/10 border border-error/20 rounded-xl flex items-center gap-3 text-error animate-in fade-in slide-in-from-top-2">
               <AlertCircle size={20} className="flex-shrink-0" />
               <p>{error}</p>
             </div>
           )}
 
           {success && (
-            <div className="mb-6 p-4 bg-green-50 dark:bg-green-900/10 border border-green-200 dark:border-green-800 rounded-xl flex items-center gap-3 text-green-600 dark:text-green-400 animate-in fade-in slide-in-from-top-2">
+            <div className="mb-6 p-4 bg-success/10 border border-success/20 rounded-xl flex items-center gap-3 text-success animate-in fade-in slide-in-from-top-2">
               <CheckCircle size={20} className="flex-shrink-0" />
               <p>{success}</p>
             </div>
@@ -140,14 +140,14 @@ function AssignTenantContent() {
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              <label className="block text-sm font-medium text-text-primary">
                 Select Room
               </label>
               <div className="relative">
                 <select
                   value={roomId}
                   onChange={(e) => setRoomId(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all appearance-none cursor-pointer"
+                  className="w-full px-4 py-3 rounded-xl border border-border bg-background-muted text-text-primary focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all appearance-none cursor-pointer"
                   disabled={submitting}
                 >
                   <option value="">-- Choose a Room --</option>
@@ -157,26 +157,26 @@ function AssignTenantContent() {
                     </option>
                   ))}
                 </select>
-                <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-gray-500">
+                <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-text-muted">
                   <svg className="h-4 w-4 fill-current" viewBox="0 0 20 20">
                     <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" fillRule="evenodd"/>
                   </svg>
                 </div>
               </div>
-              <p className="text-xs text-gray-500 dark:text-gray-400">
+              <p className="text-xs text-text-secondary">
                 Only rooms with available capacity are shown.
               </p>
             </div>
 
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              <label className="block text-sm font-medium text-text-primary">
                 Select Tenant
               </label>
               <div className="relative">
                 <select
                   value={tenantId}
                   onChange={(e) => setTenantId(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all appearance-none cursor-pointer"
+                  className="w-full px-4 py-3 rounded-xl border border-border bg-background-muted text-text-primary focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all appearance-none cursor-pointer"
                   disabled={submitting}
                 >
                   <option value="">-- Choose a Tenant --</option>
@@ -186,13 +186,13 @@ function AssignTenantContent() {
                     </option>
                   ))}
                 </select>
-                <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-gray-500">
+                <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-text-muted">
                   <svg className="h-4 w-4 fill-current" viewBox="0 0 20 20">
                     <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" fillRule="evenodd"/>
                   </svg>
                 </div>
               </div>
-              <p className="text-xs text-gray-500 dark:text-gray-400">
+              <p className="text-xs text-text-secondary">
                 Only tenants not currently assigned to a room are shown.
               </p>
             </div>
@@ -200,7 +200,7 @@ function AssignTenantContent() {
             <button
               type="submit"
               disabled={submitting || !roomId || !tenantId}
-              className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold transition-all shadow-lg hover:shadow-blue-500/20 disabled:opacity-50 disabled:cursor-not-allowed mt-4"
+              className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-text-primary rounded-xl font-bold transition-all shadow-lg hover:shadow-primary/20 disabled:opacity-50 disabled:cursor-not-allowed mt-4"
             >
               {submitting ? (
                 <>
@@ -221,9 +221,9 @@ function AssignTenantContent() {
 export default function AssignTenantPage() {
   return (
     <ProtectedRoute allowedRoles={["admin"]}>
-      <div className="min-h-screen bg-gray-50 dark:bg-slate-950">
+      <div className="min-h-screen bg-background">
         <AdminNavbar />
-        <Suspense fallback={<div className="flex justify-center p-10"><Loader2 className="animate-spin text-blue-600" /></div>}>
+        <Suspense fallback={<div className="flex justify-center p-10"><Loader2 className="animate-spin text-primary" /></div>}>
            <AssignTenantContent />
         </Suspense>
       </div>

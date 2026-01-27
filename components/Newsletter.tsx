@@ -27,7 +27,7 @@ const Newsletter = () => {
         variants={SlideUp(0.6)}
         initial="initial"
         whileInView="animate"
-        className="!mt-10 flex justify-center"
+        className="!mt-10 flex gap-2 justify-center"
       >
         <input
           type="text"

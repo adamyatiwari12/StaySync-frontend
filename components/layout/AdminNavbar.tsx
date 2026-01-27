@@ -46,7 +46,7 @@ const AdminNavbar: FC = () => {
             onClick={() => handleNavigation("/")}
           >
             <img src={Logo.src} alt="StaySync" className="h-8.5 w-8.5" />
-            <span className="text-xl font-bold text-primary">
+            <span className="text-xl font-bold text-text-primary">
               StaySync
             </span>
           </div>

@@ -40,7 +40,7 @@ const Hero = () => {
                   Start Managing
                 </motion.button>
               </Link>
-              <Link href="/signin">
+              {/* <Link href="/signin">
                 <motion.button
                   variants={SlideUp(1.1)}
                   initial="initial"
@@ -49,7 +49,7 @@ const Hero = () => {
                 >
                   Login
                 </motion.button>
-              </Link>
+              </Link> */}
             </div>
           </div>
           {/* Images section */}

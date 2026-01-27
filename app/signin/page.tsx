@@ -3,6 +3,7 @@
 import { useState, FC, FormEvent, ChangeEvent } from "react";
 import { signin } from "@/services/auth.services";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { LoginData } from "@/types/auth";
 import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 import { getErrorMessage } from "@/lib/getErrorMessage";
@@ -52,6 +53,16 @@ const SigninPage: FC = () => {
     if (errors[name as keyof FormErrors]) {
       setErrors({ ...errors, [name]: undefined });
     }
+  };
+
+  const handleDemoLogin = (role: "admin" | "tenant") => {
+    const demoData = role === "admin" 
+      ? { email: "admin@gmail.com", password: "admin123", stayId: "697851963138d44d07fa81f1" }
+      : { email: "tenant@gmail.com", password: "tenant123", stayId: "697851963138d44d07fa81f1" };
+    
+    setForm(demoData);
+    setErrors({});
+    setApiError("");
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -164,6 +175,23 @@ const SigninPage: FC = () => {
               )}
             </div>
 
+            <div className="grid grid-cols-2 gap-4">
+              <button
+                type="button"
+                onClick={() => handleDemoLogin("admin")}
+                className="py-2 px-4 rounded-lg border border-primary/30 text-primary text-sm font-medium hover:bg-primary/5 transition-colors"
+              >
+                Demo Admin
+              </button>
+              <button
+                type="button"
+                onClick={() => handleDemoLogin("tenant")}
+                className="py-2 px-4 rounded-lg border border-primary/30 text-primary text-sm font-medium hover:bg-primary/5 transition-colors"
+              >
+                Demo Tenant
+              </button>
+            </div>
+
             <button
               type="submit"
               disabled={loading}
@@ -171,8 +199,26 @@ const SigninPage: FC = () => {
             >
               Login
             </button>
-
           </form>
+
+          <div className="mt-6 text-center">
+            <p className="text-text-secondary text-sm">
+              Don't have an account?{" "}
+              <Link
+                href="/signup"
+                className="text-primary hover:underline font-medium"
+              >
+                Sign Up
+              </Link>
+            </p>
+          </div>
+
+          <div className="mt-8 pt-6 border-t border-border text-center">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/5 text-primary text-xs font-medium border border-primary/10">
+              <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+              Backend: Render Free Tier (may take a few seconds to wake up)
+            </div>
+          </div>
         </div>
       </div>
     </div>

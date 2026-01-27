@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import AdminNavbar from "@/components/layout/AdminNavbar";
-import { getRooms, createRoom, removeTenant } from "@/services/room.services";
+import { getRooms, createRoom, removeTenant, deleteRoom } from "@/services/room.services";
 import { Room } from "@/types/room";
 import {
   Plus,
@@ -87,13 +87,23 @@ export default function AdminRoomsPage() {
     }
   };
 
+  const handleDeleteRoom = async (roomId: string) => {
+    if (!confirm("Are you sure you want to delete this room? This action cannot be undone.")) return;
+    try {
+      await deleteRoom(roomId);
+      fetchRooms();
+    } catch (err: any) {
+      alert(err.response?.data?.message || "Failed to delete room");
+    }
+  };
+
   return (
     <ProtectedRoute allowedRoles={["admin"]}>
       <div className="min-h-screen bg-background">
         <AdminNavbar />
 
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          {/* Header */}
+
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
             <div>
               <h1 className="text-2xl font-bold">Rooms Management</h1>
@@ -111,7 +121,6 @@ export default function AdminRoomsPage() {
             </button>
           </div>
 
-          {/* Loading */}
           {loading && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-pulse">
               {[1, 2, 3, 4, 5, 6].map((i) => (
@@ -123,7 +132,6 @@ export default function AdminRoomsPage() {
             </div>
           )}
 
-          {/* Error */}
           {!loading && error && (
             <div className="flex items-center justify-center p-8 bg-error/10 rounded-xl border border-error/30 text-error">
               <AlertCircle className="mr-2" size={20} />
@@ -131,7 +139,6 @@ export default function AdminRoomsPage() {
             </div>
           )}
 
-          {/* Empty */}
           {!loading && !error && rooms.length === 0 && (
             <div className="text-center py-16 bg-background-card rounded-xl border border-border">
               <div className="bg-background-muted rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
@@ -153,7 +160,6 @@ export default function AdminRoomsPage() {
             </div>
           )}
 
-          {/* Rooms */}
           {!loading && !error && rooms.length > 0 && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {rooms.map((room) => {
@@ -193,12 +199,21 @@ export default function AdminRoomsPage() {
                           </div>
                         </div>
 
-                        <div className="text-right">
-                          <p className="text-lg font-bold flex items-center">
-                            <IndianRupee size={16} className="text-text-muted" />
-                            {room.rentAmount.toLocaleString("en-IN")}
-                          </p>
-                          <p className="text-xs text-text-muted">/month</p>
+                        <div className="flex flex-col items-end gap-2">
+                          <button
+                            onClick={() => handleDeleteRoom(room._id)}
+                            className="p-1.5 text-text-muted hover:text-error hover:bg-error/10 rounded-lg transition"
+                            title="Delete Room"
+                          >
+                            <Trash2 size={18} />
+                          </button>
+                          <div className="text-right">
+                            <p className="text-lg font-bold flex items-center">
+                              <IndianRupee size={16} className="text-text-muted" />
+                              {room.rentAmount.toLocaleString("en-IN")}
+                            </p>
+                            <p className="text-xs text-text-muted">/month</p>
+                          </div>
                         </div>
                       </div>
 

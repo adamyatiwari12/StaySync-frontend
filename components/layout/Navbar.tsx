@@ -1,25 +1,26 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Logo from "@/assets/Logo.jpg";
+import Link from "next/link";
 
-const NavLinks = [
-  {
-    title: "About",
-    link: "#",
-  },
-  {
-    title: "Services",
-    link: "#",
-  },
-  {
-    title: "Project",
-    link: "#",
-  },
-  {
-    title: "Contact",
-    link: "#",
-  },
-];
+// const NavLinks = [
+//   {
+//     title: "About",
+//     link: "#",
+//   },
+//   {
+//     title: "Services",
+//     link: "#",
+//   },
+//   {
+//     title: "Project",
+//     link: "#",
+//   },
+//   {
+//     title: "Contact",
+//     link: "#",
+//   },
+// ];
 const Navbar = () => {
   return (
     <>
@@ -27,7 +28,7 @@ const Navbar = () => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className="container py-6 flex justify-between items-center"
+        className="container px-2 py-6 flex justify-between items-center"
       >
         {/* Logo section */}
         <div className="flex items-center gap-3">
@@ -35,7 +36,7 @@ const Navbar = () => {
           <span className="text-2xl font-bold">StaySync</span>
         </div>
         {/* Link section */}
-        <div className="hidden md:block">
+        {/* <div className="hidden md:block">
           {NavLinks.map((link,ind) => {
             return (
               <a key = {ind}
@@ -46,11 +47,15 @@ const Navbar = () => {
               </a>
             );
           })}
-        </div>
+        </div> */}
         {/* Button section */}
         <div className="flex gap-2">
+          <Link href="/signup">
           <button className="primary-btn">Try For Free</button>
+          </Link>
+          <Link href="/signin">
           <button className="secondary-btn">Login</button>
+          </Link>
         </div>
       </motion.div>
     </>

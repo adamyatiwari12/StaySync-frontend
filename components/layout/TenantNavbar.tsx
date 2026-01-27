@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState, FC } from "react";
+import Logo from "@/assets/Logo.png";
 import {
   Menu,
   X,
@@ -42,8 +43,8 @@ const TenantNavbar: FC = () => {
             className="flex items-center gap-2 cursor-pointer"
             onClick={() => handleNavigation("/")}
           >
-            <img src="/StaySyncLogo.png" alt="StaySync" className="h-8.5 w-8.5" />
-            <span className="text-xl font-bold text-primary">
+            <img src={Logo.src} alt="StaySync" className="h-8.5 w-8.5" />
+            <span className="text-xl font-bold text-text-primary">
               StaySync
             </span>
           </div>
