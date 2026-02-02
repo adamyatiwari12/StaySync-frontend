@@ -49,7 +49,6 @@ export default function TenantPaymentsPage() {
       ? "bg-success/10 text-success border-success/30"
       : "bg-warning/10 text-warning border-warning/30";
 
-  /* ================= HANDLE PAY ================= */
   const handlePay = async () => {
     if (!selectedPayment) return;
 
@@ -78,7 +77,7 @@ export default function TenantPaymentsPage() {
 
             alert("Payment successful 🎉");
             setSelectedPayment(null);
-            router.push("/tenant/dashboard"); // Redirect to dashboard
+            router.push("/tenant/dashboard");
           } catch (error) {
             console.error("Verification failed", error);
             alert("Payment verification failed, please contact support");
@@ -116,7 +115,7 @@ export default function TenantPaymentsPage() {
         <Script src="https://checkout.razorpay.com/v1/checkout.js" />
 
         <main className="max-w-7xl mx-auto p-6 space-y-8">
-          {/* Header */}
+
           <div>
             <h1 className="text-3xl font-bold text-text-primary">Payments</h1>
             <p className="text-text-secondary mt-1">
@@ -124,7 +123,6 @@ export default function TenantPaymentsPage() {
             </p>
           </div>
 
-          {/* Table */}
           <div className="bg-background-card border border-border rounded-2xl overflow-hidden">
             {payments.length === 0 ? (
               <div className="p-12 text-center">
@@ -205,7 +203,6 @@ export default function TenantPaymentsPage() {
           </div>
         </main>
 
-        {/* MODAL */}
         {selectedPayment && (
           <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
             <div className="bg-background-card p-6 rounded-2xl border border-border w-full max-w-md">
