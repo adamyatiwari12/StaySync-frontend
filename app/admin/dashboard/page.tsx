@@ -1,6 +1,6 @@
 "use client";
 
-import ProtectedRoute from "@/components/ProtectedRoute";
+import ProtectedRoute from "@/components/home/ProtectedRoute";
 import AdminNavbar from "@/components/layout/AdminNavbar";
 import { useEffect, useState } from "react";
 import { getRooms } from "@/services/room.services";

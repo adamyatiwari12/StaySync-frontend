@@ -2,7 +2,7 @@
 
 import { useEffect, useState, FormEvent, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import ProtectedRoute from "@/components/ProtectedRoute";
+import ProtectedRoute from "@/components/home/ProtectedRoute";
 import AdminNavbar from "@/components/layout/AdminNavbar";
 import { getRooms, assignTenant } from "@/services/room.services";
 import { getTenants } from "@/services/user.services";
@@ -76,7 +76,7 @@ function AssignTenantContent() {
       setSubmitting(true);
       await assignTenant({ roomId, tenantId });
       setSuccess("Tenant assigned successfully!");
-      
+
       // Redirect after short delay
       setTimeout(() => {
         router.push("/admin/rooms");
@@ -102,7 +102,7 @@ function AssignTenantContent() {
 
   return (
     <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <button 
+      <button
         onClick={() => router.back()}
         className="flex items-center text-text-muted hover:text-text-primary mb-6 transition-colors"
       >
@@ -114,7 +114,7 @@ function AssignTenantContent() {
         <div className="p-8 border-b border-border bg-background-muted/50">
           <div className="flex items-center gap-4">
             <div className="p-3 bg-primary/10 rounded-xl text-primary">
-               <UserPlus size={32} />
+              <UserPlus size={32} />
             </div>
             <div>
               <h1 className="text-2xl font-bold text-text-primary">Assign Tenant</h1>
@@ -159,7 +159,7 @@ function AssignTenantContent() {
                 </select>
                 <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-text-muted">
                   <svg className="h-4 w-4 fill-current" viewBox="0 0 20 20">
-                    <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" fillRule="evenodd"/>
+                    <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" fillRule="evenodd" />
                   </svg>
                 </div>
               </div>
@@ -188,7 +188,7 @@ function AssignTenantContent() {
                 </select>
                 <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-text-muted">
                   <svg className="h-4 w-4 fill-current" viewBox="0 0 20 20">
-                    <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" fillRule="evenodd"/>
+                    <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" fillRule="evenodd" />
                   </svg>
                 </div>
               </div>
@@ -224,7 +224,7 @@ export default function AssignTenantPage() {
       <div className="min-h-screen bg-background">
         <AdminNavbar />
         <Suspense fallback={<div className="flex justify-center p-10"><Loader2 className="animate-spin text-primary" /></div>}>
-           <AssignTenantContent />
+          <AssignTenantContent />
         </Suspense>
       </div>
     </ProtectedRoute>

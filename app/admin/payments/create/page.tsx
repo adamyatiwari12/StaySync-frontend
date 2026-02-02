@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ProtectedRoute from "@/components/ProtectedRoute";
+import ProtectedRoute from "@/components/home/ProtectedRoute";
 import AdminNavbar from "@/components/layout/AdminNavbar";
 import { createPayment } from "@/services/payment.service";
 import { useRouter } from "next/navigation";

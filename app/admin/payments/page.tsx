@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { getPayments, markPaymentAsPaid, deletePayment } from "@/services/payment.service";
 import { Payment } from "@/types/payment";
-import ProtectedRoute from "@/components/ProtectedRoute";
+import ProtectedRoute from "@/components/home/ProtectedRoute";
 import AdminNavbar from "@/components/layout/AdminNavbar";
 import {
   Search,

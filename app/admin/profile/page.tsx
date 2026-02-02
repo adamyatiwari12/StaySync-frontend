@@ -1,4 +1,4 @@
-import Profile from "@/components/Profile";
+import Profile from "@/components/home/Profile";
 import AdminNavbar from "@/components/layout/AdminNavbar";
 
 export default function AdminProfilePage() {

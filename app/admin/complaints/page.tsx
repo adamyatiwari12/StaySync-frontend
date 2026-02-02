@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ProtectedRoute from "@/components/ProtectedRoute";
+import ProtectedRoute from "@/components/home/ProtectedRoute";
 import {
   getComplaints,
   updateComplaintStatus,
@@ -54,13 +54,13 @@ export default function AdminComplaintsPage() {
         prev.map((c) =>
           c._id === complaintId
             ? {
-                ...c,
-                status: newStatus,
-                resolvedAt:
-                  newStatus === "resolved"
-                    ? new Date().toISOString()
-                    : null,
-              }
+              ...c,
+              status: newStatus,
+              resolvedAt:
+                newStatus === "resolved"
+                  ? new Date().toISOString()
+                  : null,
+            }
             : c
         )
       );
