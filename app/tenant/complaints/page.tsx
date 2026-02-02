@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ProtectedRoute from "@/components/ProtectedRoute";
+import ProtectedRoute from "@/components/home/ProtectedRoute";
 import TenantNavbar from "@/components/layout/TenantNavbar";
 import {
   getMyComplaints,
@@ -95,7 +95,7 @@ export default function MyComplaintsPage() {
       if (err instanceof AxiosError) {
         alert(
           err.response?.data?.message ||
-            "Failed to submit complaint"
+          "Failed to submit complaint"
         );
       } else {
         alert("Something went wrong");

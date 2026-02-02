@@ -1,6 +1,6 @@
 "use client";
 
-import ProtectedRoute from "@/components/ProtectedRoute";
+import ProtectedRoute from "@/components/home/ProtectedRoute";
 import TenantNavbar from "@/components/layout/TenantNavbar";
 import { useState, useEffect } from "react";
 import { Home, CreditCard, AlertCircle } from "lucide-react";
