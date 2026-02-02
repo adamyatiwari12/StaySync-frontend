@@ -69,11 +69,11 @@ const Footer = () => {
             <ul className="text-base font-semibold space-y-4">
               <li className="flex items-center space-x-3">
                 <FaPhone className="text-primary" />
-                <a href="#" className="hover:text-primary duration-300">+91 123456789</a>
+                <a href="#" className="hover:text-primary duration-300">+91 1234567890</a>
               </li>
               <li className="flex items-center space-x-3">
                 <LuMessageSquare className="text-secondary" />
-                <a href="mailto:contact.thecodingjourney@gmail.com" className="hover:text-primary duration-300">Email</a>
+                <a href="mailto:adamyatiwari99@gmail.com" className="hover:text-primary duration-300">Email</a>
               </li>
             </ul>
           </div>

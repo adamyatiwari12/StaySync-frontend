@@ -1,7 +1,7 @@
 import axios, { InternalAxiosRequestConfig } from "axios";
 
 const API = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001/api",
+  baseURL: /*process.env.NEXT_PUBLIC_API_URL || */"http://localhost:5001/api",
 });
 
 API.interceptors.request.use((config: InternalAxiosRequestConfig) => {
@@ -17,11 +17,18 @@ API.interceptors.request.use((config: InternalAxiosRequestConfig) => {
 API.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response?.status === 401) {
+    const url = error.config?.url || "";
+
+    const isRazorpayFlow =
+      url.includes("/payments/razorpay") ||
+      url.includes("/payments/") && url.includes("order");
+
+    if (error.response?.status === 401 && !isRazorpayFlow) {
       localStorage.removeItem("token");
       localStorage.removeItem("user");
       window.location.href = "/login";
     }
+
     return Promise.reject(error);
   }
 );
